@@ -6,8 +6,10 @@
 
 package com.code.leetcode;
 
-import java.util.HashMap;
+import org.apache.commons.lang3.StringUtils;
 
+import java.util.HashMap;
+import java.util.Stack;
 /**
  * @author damai
  *
@@ -33,52 +35,31 @@ public class Numeral20 {
         if (s.length() % 2==1){
             return false;
         }
-        HashMap<Integer, Boolean> validMap = new HashMap <Integer, Boolean>(16);
-        for (int i=0;i<s.length();i++){
+        HashMap<String, String> map = new HashMap<String, String>(16) {
+            {
+                put("(", ")");
+                put("{", "}");
+                put("[", "]");
+            }
+        };
+        Stack<String> stringStack = new Stack <String>();
+        for (int i=0,length=s.length(); i<length; i++){
             String s1 = String.valueOf(s.charAt(i));
-
-            boolean go =  validMap.getOrDefault(i,false);
-            if (!go){
-                for (int j=i+1; j<s.length(); j++){
-                    String s2 = String.valueOf(s.charAt(j));
-                    if (s1.equals("(") && s2.equals(")")){
-                        validMap.put(j, true);
-                        break;
-                    }else if (s1.equals("{") && s2.equals("}")){
-                        validMap.put(j, true);
-                        break;
-                    }else if (s1.equals("[") && s2.equals("]")){
-                        validMap.put(j, true);
-                        break;
-                    }else if (j==s.length()-1){
-                        return false;
-                    }
-
+            if (map.containsKey(s1)){
+                stringStack.push(s1);
+            }
+            //获取value值
+            if (map.containsValue(s1)){
+                if (stringStack.empty()){
+                    return false;
+                }
+                String s2 = stringStack.pop();
+                if (!map.get(s2).equals(s1)){
+                    return false;
                 }
             }
         }
-        return true;
-
+        return stringStack.empty();
     }
-    public boolean isValid2(String s) {
-        if (null == s){
-            return false;
-        }
-        if (s.length() % 2==1){
-            return false;
-        }
-        for (int i=0;i<s.length();i+=2){
-            String s1 = String.valueOf(s.charAt(i));
-            String s2 = String.valueOf(s.charAt(i+1));
-            if (s1.equals("(") && s2.equals(")")){
-            }else if (s1.equals("{") && s2.equals("}")){
-            }else if (s1.equals("[") && s2.equals("]")){
-            }else {
-                return false;
-            }
 
-        }
-        return true;
-
-    }
 }

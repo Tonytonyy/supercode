@@ -1,9 +1,3 @@
-/*
- * Numeral22.java
- * Copyright 2019 Qunhe Tech, all rights reserved.
- * Qunhe PROPRIETARY/CONFIDENTIAL, any form of usage is subject to approval.
- */
-
 package com.code.leetcode;
 
 import java.util.ArrayList;
@@ -14,36 +8,25 @@ import java.util.List;
  *
  */
 public class Numeral22 {
-    /**
-     * 给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。
-     * 例如，给出 n = 3，生成结果为：
-     *
-     * [
-     *   "((()))",
-     *   "(()())",
-     *   "(())()",
-     *   "()(())",
-     *   "()()()"
-     * ]
-     *
-     */
     public List<String> generateParenthesis(int n) {
-        List<String> ans = new ArrayList();
-        backtrack(ans, "", 0, 0, n);
-        return ans;
+        List<String> list = new ArrayList <String>();
+        generateParenthesis2(list, "",0,0,n);
+        return list;
     }
 
-    public void backtrack(List<String> ans, String cur, int open, int close, int max){
-        if (cur.length() == max * 2) {
-            ans.add(cur);
+    public void generateParenthesis2(List<String> list,String ans,int left,
+            int right, int n) {
+        if (right > n || left > n || right > left){
             return;
         }
+        if (right ==n && left == n){
+            list.add(ans);
+        }
+        if (right < n || left < n){
+            String ans1 = new String(ans);
+            generateParenthesis2(list, ans1 +"(", left +1 ,right, n);
+            generateParenthesis2(list, ans1 +")", left ,right+1, n);
 
-        if (open < max)
-            backtrack(ans, cur+"(", open+1, close, max);
-        if (close < open)
-            backtrack(ans, cur+")", open, close+1, max);
+        }
     }
-
-
 }
