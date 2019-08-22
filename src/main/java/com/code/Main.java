@@ -7,7 +7,7 @@
 package com.code;
 
 /**
- * @author qingliang
+ * @author damai
  *
  */
 public class Main {
