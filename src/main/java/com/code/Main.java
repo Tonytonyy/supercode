@@ -18,6 +18,7 @@ public class Main {
     }
 
     public static boolean isNull(List list){
+        list.add()
         return list.isEmpty();
     }
 }

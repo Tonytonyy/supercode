@@ -8,6 +8,7 @@ package com.code.sword;
 
 
 import com.code.leetcode.node.ListNode;
+import com.sun.istack.internal.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -360,7 +361,8 @@ public class Solution {
 
     }
 
-    public void inorder(TreeNode root, List<Integer> list){
+    ArrayList
+   public void inorder(TreeNode root, List<Integer> list){
         if (null == root){
             return;
         }
