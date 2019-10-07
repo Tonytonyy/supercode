@@ -9,6 +9,7 @@ package com.code.sword;
 
 import com.code.leetcode.node.ListNode;
 import com.sun.istack.internal.NotNull;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,6 +26,9 @@ import java.util.stream.Collectors;
  */
 
 public class Solution {
+    public static void main(String[] args) {
+        new Solution().FindPathRun();
+    }
     public class TreeNode {
         int val = 0;
         TreeNode left = null;
@@ -361,7 +365,7 @@ public class Solution {
 
     }
 
-    ArrayList
+
    public void inorder(TreeNode root, List<Integer> list){
         if (null == root){
             return;
@@ -382,5 +386,177 @@ public class Solution {
         inorder(root.right, list);
 
     }
-}
+
+    /**
+     * 镜像二叉树
+     */
+    public void Mirror(TreeNode root) {
+        if (null == root){
+            return;
+        }
+
+    }
+    public void MirrorTree(TreeNode left, TreeNode right) {
+        if (left == null){
+
+        }
+        int tmp = left.val;
+        left.val = right.val;
+        right.val = tmp;
+        MirrorTree(left.left, right.right);
+        MirrorTree(left.right, right.left);
+
+    }
+    public void PrintMinNumberRun(){
+        int[] numbers = {3,5,1,4,2};
+        System.out.println(PrintMinNumber(numbers));
+    }
+
+    public String PrintMinNumber(int [] numbers) {
+        List<String> list = new ArrayList<>();
+        for (int num:numbers){
+            list.add(String.valueOf(num));
+        }
+        PrintMinNumberPer(list, new ArrayList<>());
+        Collections.sort(resultList);
+        String result = resultList.size() > 0 ? resultList.get(0):null;
+        return result;
+    }
+    ArrayList<String> resultList = new ArrayList<>();
+    public void PrintMinNumberPer(List<String> integers, List<String> reult) {
+        if (integers.size() == reult.size()){
+            System.out.println(reult.toString());
+            String str = "";
+            for (String s:reult){
+                str += s;
+            }
+            resultList.add(str);
+        }else {
+            for (int i=0;i<integers.size();i++){
+                if (!reult.contains(integers.get(i))){
+                    List<String> tmp = new ArrayList<>();
+                    tmp.addAll(reult);
+                    tmp.add(integers.get(i));
+                    PrintMinNumberPer(integers, tmp);
+                }
+            }
+        }
+    }
+    /**
+     * 全排列算法
+     * 获取所有的组合
+     */
+    public void permutation(String s, String result, int length){
+        //result的长度与预期组合长度相同时，打印出结果
+        if (length == result.length()){
+            System.out.println(result);
+        }else {
+            for (int i=0;i<s.length();i++){
+                //检查result里面是否含有s.charAt（i） 这个对象
+                if (result.indexOf(s.charAt(i))<0){
+                    permutation(s, result+s.charAt(i), length);
+                }
+            }
+        }
+    }
+
+    public void permutationRun(){
+        String s = "abcd";
+        permutation(s, "", s.length());
+    }
+
+    ArrayList<String> permutationResult = new ArrayList<>();
+    public void PermutationRun(){
+        Permutation("a");
+        System.out.println(permutationResult.toString());
+    }
+    public ArrayList<String> Permutation(String str) {
+        if (null == str || str.isEmpty()){
+            return permutationResult;
+        }
+
+        PermutationRecursive(str, "");
+        return permutationResult;
+    }
+
+    public void PermutationRecursive(String str, String result) {
+        if (str.length() == result.length()){
+            System.out.println(result);
+            String addStr = "";
+            for (int i=0; i<result.length(); i++){
+                System.out.println(result.charAt(i));
+                int index = Integer.valueOf(String.valueOf(result.charAt(i)));
+                addStr += str.charAt(index);
+            }
+            if (!permutationResult.contains(addStr)){
+                permutationResult.add(addStr);
+
+            }
+        }else {
+            for (int i=0;i<str.length();i++){
+                if (result.indexOf(String.valueOf(i)) < 0){
+                    //result 存放索引，因为str的数字可能有重复的
+                    PermutationRecursive(str, result + i);
+                }
+            }
+        }
+    }
+
+    public boolean duplicate(int numbers[],int length,int [] duplication) {
+        if (null == numbers || numbers.length <= 1){
+            return false;
+        }
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i=0; i<length; i++){
+            int count = map.getOrDefault(numbers[i], 0);
+            count ++;
+            if (count == 2){
+                duplication[0] = 2;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    ArrayList<ArrayList<Integer>> FindPathArrayList = new ArrayList<>();
+    public void FindPathRun(){
+        TreeNode treeNode1 = new TreeNode(1);
+        TreeNode treeNode2 = new TreeNode(2);
+        TreeNode treeNode3 = new TreeNode(3);
+        treeNode1.left = treeNode2;
+        treeNode1.right = treeNode3;
+        FindPath(treeNode1, 3);
+        for (ArrayList<Integer> arrayList:FindPathArrayList){
+            System.out.println(arrayList.toString());
+        }
+    }
+    public ArrayList<ArrayList<Integer>> FindPath(TreeNode root,int target) {
+        if (null == root){
+            return FindPathArrayList;
+        }
+        FindPathDec(root, new ArrayList<Integer>(), 0, target);
+        return FindPathArrayList;
+    }
+    public void FindPathDec(TreeNode treeNode, ArrayList<Integer> path, int result, int target){
+        if (null == treeNode){
+            return;
+        }
+        result += treeNode.val;
+        ArrayList<Integer> tmp = new ArrayList<>();
+        tmp.addAll(path);
+        tmp.add(treeNode.val);
+        if (result == target && treeNode.left == null && treeNode.right == null){
+            System.out.println(tmp.toString());
+            FindPathArrayList.add(tmp);
+        }else if (result < target){
+            FindPathDec(treeNode.left, tmp, result , target);
+            FindPathDec(treeNode.right, tmp, result , target);
+        }
+
+    }
+
+
+
+
+    }
 
