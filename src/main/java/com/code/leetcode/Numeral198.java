@@ -18,8 +18,7 @@ public class Numeral198 {
     public static void main(String[] args){
         int[] nums = {1,2,3};
         Numeral198 numeral198 = new Numeral198();
-        numeral198.permute(nums);
-        System.out.println(numeral198.permuteList.toString());
+
     }
 
     int maxMonney = 0;
@@ -60,32 +59,6 @@ public class Numeral198 {
             prevMax = temp;
         }
         return currMax;
-    }
-    List<List<Integer>> permuteList = new ArrayList <>();
-    public List<List <Integer>> permute(int[] nums) {
-        if (null == nums || nums.length == 0){
-            return permuteList;
-        }
-        for (int num:nums){
-            List<Integer> list = new ArrayList <>();
-            list.add(num);
-            permuteTraversal(nums, list);
-        }
-        return permuteList;
-    }
-    public void permuteTraversal(int[] nums, List<Integer> list){
-        if (list.size() == nums.length){
-            permuteList.add(list);
-        }else {
-            for (int i=0;i<nums.length;i++){
-                if (!list.contains(nums[i])){
-                    List<Integer> nextList = new ArrayList <>();
-                    nextList.addAll(list);
-                    nextList.add(nums[i]);
-                    permuteTraversal(nums, nextList);
-                }
-            }
-        }
     }
 
 
