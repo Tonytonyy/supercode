@@ -14,7 +14,10 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args){
-        System.out.println(isNull(null));
+        String a = new String("1");
+        String b = new String("1");
+        System.out.println(a==b);
+        System.out.println(a.equals(b));
     }
 
     public static boolean isNull(List list){
