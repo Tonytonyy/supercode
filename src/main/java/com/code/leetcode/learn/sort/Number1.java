@@ -1,5 +1,7 @@
 package com.code.leetcode.learn.sort;
 
+import java.util.Arrays;
+
 public class Number1 {
     /**
      * 给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
@@ -22,5 +24,16 @@ public class Number1 {
                }
            }
            return index;
+    }
+
+    public void testRemoveDuplicates(){
+           int[] arr = {1,2,2,3,3,4,5};
+           removeDuplicates(arr);
+           System.out.println(Arrays.toString(arr));
+    }
+
+    public static void main(String[] args){
+           new Number1().testRemoveDuplicates();
+           System.out.println(1^1);
     }
 }

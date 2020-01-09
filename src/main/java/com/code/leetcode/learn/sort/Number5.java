@@ -29,4 +29,18 @@ public class Number5 {
         }
         return map.entrySet().stream().filter(ent->ent.getValue().equals(2)).findFirst().get().getKey();
     }
+    /***
+     * 异或运算的特点：两个相同的数字异或，结果为0。
+     *
+     * 因为数组中除了一个元素只出现一次之外，其它的元素都出现两次，
+     * 如果把所有的数都异或，相同的数字异或为0，最后只剩下出现一次的数字，它和0异或，结果就是它本身。
+     */
+    public int singleNumber2(int[] nums) {
+        int num = 0;
+        for(int i = 0; i < nums.length; i++){
+            num = num ^ nums[i];
+        }
+        return num;
+    }
+
 }
