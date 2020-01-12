@@ -38,15 +38,15 @@ public class WYInterview {
      *2、链表反转
      */
     public ListNode listNodeReverse(ListNode node){
-        ListNode head = new ListNode(1);
-        ListNode currentNode = node;
+        ListNode next = null;
         ListNode perNode = null;
-        ListNode nextNode = null;
-        while (null!=currentNode){
-            nextNode = currentNode.next;
-            currentNode.next = nextNode;
-            perNode = currentNode;
-            currentNode = nextNode;
+        while (null!=node){
+            next = node.next;
+            //反转，由下一个节点转为之前节点
+            node.next = perNode;
+            //pre保持当前的节点，准备下次再用
+            perNode = node;
+            node = next;
         }
         return perNode;
     }
