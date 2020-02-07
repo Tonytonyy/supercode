@@ -2,7 +2,7 @@ package com.code.otheralgorithm;
 
 import com.google.common.collect.Maps;
 import jdk.nashorn.internal.ir.annotations.Ignore;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -201,6 +201,7 @@ public class AlibbInterview {
     }
 
     @Test
+    @Ignore
     public void towSumTest() {
         int[] arr = { 2, 7, 11, 15 };
         System.out.println(Arrays.toString(towSum(arr, 17)));
