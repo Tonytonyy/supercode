@@ -2,9 +2,7 @@ package com.code.otheralgorithm;
 
 import com.code.leetcode.node.ListNode;
 import com.google.common.collect.Lists;
-import org.junit.jupiter.api.Test;
-
-import java.util.Collections;
+import org.junit.Test;
 import java.util.List;
 
 public class WYInterview {

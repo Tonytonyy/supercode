@@ -1,7 +1,7 @@
 package com.code.newfeatures;
 
 import com.google.common.collect.Lists;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.Collection;
 import java.util.List;

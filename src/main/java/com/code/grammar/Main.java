@@ -6,9 +6,7 @@
 
 package com.code.grammar;
 
-import org.junit.jupiter.api.Test;
-
-import java.util.concurrent.ThreadPoolExecutor;
+import org.junit.Test;
 
 /**
  * @author damai
