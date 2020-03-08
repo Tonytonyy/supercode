@@ -1,0 +1,49 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Main<supercode>",
+            "request": "launch",
+            "mainClass": "com.code.Main",
+            "projectName": "supercode"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Numeral139<supercode>",
+            "request": "launch",
+            "mainClass": "com.code.leetcode.Numeral139",
+            "projectName": "supercode"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Numeral198<supercode>",
+            "request": "launch",
+            "mainClass": "com.code.leetcode.Numeral198",
+            "projectName": "supercode"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Number6<supercode>",
+            "request": "launch",
+            "mainClass": "com.code.leetcode.learn.sort.Number6",
+            "projectName": "supercode"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Solution<supercode>",
+            "request": "launch",
+            "mainClass": "com.code.sword.Solution",
+            "projectName": "supercode"
+        }
+    ]
+}
