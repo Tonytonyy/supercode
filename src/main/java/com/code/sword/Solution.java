@@ -21,13 +21,13 @@ import java.util.stream.Collectors;
 
 /**
  * @author damai
- *
  */
-
 public class Solution {
+    
     public static void main(String[] args) {
-        new Solution().FindPathRun();
+        Object obj = new Object();
     }
+
     public class TreeNode {
         int val = 0;
         TreeNode left = null;
